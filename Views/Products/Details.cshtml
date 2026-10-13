@@ -1,0 +1,32 @@
+@model internship.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>Product Details</h1>
+
+<div>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">Price</dt>
+        <dd class="col-sm-9">@Model.Price.ToString("C")</dd>
+
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+    </dl>
+</div>
+
+<div>
+    @if (User.IsInRole("Write"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id"
+           class="btn btn-primary">Edit</a>
+    }
+
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

@@ -1,0 +1,49 @@
+@model IEnumerable<internship.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+    var canWrite = User.IsInRole("Write");
+}
+
+<h1>Products</h1>
+<!-- It hides Create, Edit, and Delete buttons from Read users.-->
+@if (canWrite)
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New Product</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Price.ToString("C")</td>
+            <td>@product.Description</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@product.Id"
+                   class="btn btn-outline-secondary btn-sm">Details</a>
+
+                @if (canWrite)
+                {
+                    <a asp-action="Edit" asp-route-id="@product.Id"
+                       class="btn btn-outline-primary btn-sm">Edit</a>
+
+                    <a asp-action="Delete" asp-route-id="@product.Id"
+                       class="btn btn-outline-danger btn-sm">Delete</a>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

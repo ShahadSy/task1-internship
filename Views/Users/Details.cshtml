@@ -1,0 +1,24 @@
+@model internship.ViewModels.UserListViewModel
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<h1>User Details</h1>
+
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3">Role</dt>
+    <dd class="col-sm-9">@Model.Role</dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id"
+       class="btn btn-primary">Edit</a>
+
+    <a asp-action="Index" class="btn btn-secondary">Back to Users</a>
+</div>

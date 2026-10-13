@@ -1,0 +1,31 @@
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h1>Roles</h1>
+
+<p>Roles are read-only in this application.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Role Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var role in Model)
+    {
+        <tr>
+            <td>@role.Name</td>
+            <td>
+                <a asp-action="Details"
+                   asp-route-id="@role.Id"
+                   class="btn btn-outline-secondary btn-sm">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

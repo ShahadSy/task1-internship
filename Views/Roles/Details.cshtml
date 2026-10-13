@@ -1,0 +1,19 @@
+@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{
+    ViewData["Title"] = "Role Details";
+}
+
+<h1>Role Details</h1>
+
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Role Name</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+
+    <dt class="col-sm-3">Role ID</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+</dl>
+
+<a asp-action="Index" class="btn btn-secondary">Back to Roles</a>
